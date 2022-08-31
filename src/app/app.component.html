@@ -1,0 +1,28 @@
+<h1>Expense Table Example</h1>
+<div class="ba pa2 b--blue">
+  Expense Amount {{ monthlyAmount | async | currency }}
+</div>
+<div class="pa2 flex flex-column ba b--blue" [formGroup]="expensesForm">
+  <div formArrayName="expenses" class="flex flex-column">
+    <app-expense-item *ngFor="let item of expenses.controls; let i = index;"
+      class="ba ma1"
+      [ngClass]="item.valid ? 'b--green' : 'b--red'"
+      [formControl]="item"
+      (remove)="removeItem(i)"></app-expense-item>
+  </div>
+  <div class="pt2 flex items-center">
+    <div class="mr2">
+      Add Another Expense
+    </div>
+    <button mat-mini-fab
+      color="primary"
+      (click)="addItem()">
+      <mat-icon>
+        add</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="pa2">
+  <pre>{{expensesForm.value | json}}</pre>
+</div>

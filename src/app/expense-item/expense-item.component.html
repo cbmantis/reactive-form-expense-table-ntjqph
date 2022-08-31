@@ -1,0 +1,16 @@
+<div class="flex pa1 justify-between items-center"
+  [formGroup]="expenseItem">
+  <mat-form-field class="mr4">
+    <mat-label>Expense Name</mat-label>
+    <input matInput
+      formControlName="name">
+  </mat-form-field>
+  <currency-input formControlName="amount">
+  </currency-input>
+  <button mat-icon-button
+    color="primary"
+    (click)="remove.emit()">
+    <mat-icon>
+      remove_circle</mat-icon>
+  </button>
+</div>
